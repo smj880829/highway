@@ -1,14 +1,26 @@
-<!doctype html>
-<html ng-app>
-  <head>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
-  </head>
-  <body>
-    <div>
-      <label>Name:</label>
-      <input type="text" ng-model="yourName" placeholder="Enter a name here">
-      <hr>
-      <h1>Hello {{yourName}}!</h1>
-    </div>
-  </body>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+
+<script type="text/javascript">
+function evet()
+{
+	var input = prompt("입력","");
+}
+</script>
+
+</head>
+<body>
+hello world! <br><br>
+<input class="btn btn-default" type="button" value="Input" onclick="evet()" ><br><br>
+<form action="http://localhost:3000" method="post">
+  <input type="hidden" id="flgs" name="flgs" value="123" />
+<input class="btn btn-default" type="submit" value="route" >
+</form>
+</body>
 </html>
