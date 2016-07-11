@@ -63,7 +63,7 @@ app.use(function(err, req, res, next) {
   });
 });
 
-http.createServer(app).listen(8000, function(){
+http.createServer(app).listen(80, function(){
     console.log('server running...');
 });
 
