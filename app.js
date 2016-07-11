@@ -27,10 +27,14 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+
+
 app.use('/', routes);
 app.use('/basic', basic);
 app.use('/add_some_control', addsomecontrol);
 app.use('/users', users);
+
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -62,7 +66,7 @@ app.use(function(err, req, res, next) {
     error: {}
   });
 });
-
+/////////////////////////////////////////////
 http.createServer(app).listen(8000, function(){
     console.log('server running...');
 });
