@@ -7,9 +7,9 @@ var bodyParser = require('body-parser');
 var http = require('http');
 
 var routes = require('./routes/index');
-var users = require('./routes/users');
-var basic = require('./routes/basic');
-var addsomecontrol = require('./routes/add_some_control');
+
+var main = require('./routes/main');
+var customer = require('./routes/customer');
 
 var app = express();
 
@@ -30,9 +30,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 
 app.use('/', routes);
-app.use('/basic', basic);
-app.use('/add_some_control', addsomecontrol);
-app.use('/users', users);
+
+app.use('/main', main);
+app.use('/customer', customer);
 
 
 

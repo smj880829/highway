@@ -1,0 +1,6 @@
+extends angularjs
+
+block content
+  each i in contant
+    a.btn.btn-default(href='/#{i}')  #{i}
+    | &nbsp
