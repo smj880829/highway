@@ -1,0 +1,29 @@
+extends ../angularjs
+
+block content
+  div(ng-controller='listCtl')
+    table.table
+      thread
+        tr
+          th 종류
+          th 이름
+          th 주행거리
+          th 차주
+          th 차량정보
+          th 정비
+      tbody
+        each i in list
+          tr
+            if i.kind == 0
+              th 차량
+            else if i.kind == 1
+              th 바이크
+            else
+              th 비고
+            th #{i.name}
+            th #{i.dist}
+            th ---
+            th
+              a.btn.btn-default(href='/object/select?object_id=#{i.idobject}') 정보
+            th
+              a.btn.btn-default(href='/servivce/select?object_id=#{i.idobject}') 정비내역

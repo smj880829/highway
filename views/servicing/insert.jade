@@ -1,0 +1,30 @@
+extends ../angularjs
+
+block content
+ div(ng-controller='insertCtl')
+    form.form-horizontal
+      div.form-group
+        label.col-md-1.control-label 차량번호 :
+        div.col-md-2
+          input(type='text',class="form-control",ng-model="name")
+        label.col-md-1.control-label 고객명 :
+        div.col-md-2
+          input(type='text',class="form-control",ng-model="age")
+      div.form-group
+        label.col-md-1.control-label 차량명칭 :
+        div.col-md-2
+          input(type='text',class="form-control",ng-model="sex")
+        label.col-md-1.control-label  주행거리 :
+        div.col-md-2
+          input(type='text',class="form-control",ng-model="tel")
+      div.form-group
+        label.col-md-1.control-label 입고일 :
+        div.col-md-5
+          input(type='text',class="form-control",ng-model="address")
+      div.form-group
+        label.col-md-1.control-label 출고일 :
+        div.col-md-2
+          input(type='text',class="form-control",ng-model="email")
+      br
+      div.form-group
+        button.col-md-1.btn.btn-default(ng-click='insert_customer()') 추가

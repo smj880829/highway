@@ -1,0 +1,24 @@
+extends ../angularjs
+
+block content
+ div(ng-controller='selectCtl')
+  a.btn.btn-default(href='/object/list') 명단
+  br
+  br
+  form.form-horizontal
+    div.form-group
+      label.col-md-1.control-label 종류 :
+      div.col-md-2
+        input(type='text',class="form-control",value="#{kind}", readonly)
+
+      label.col-md-1.control-label 모델명 :
+      div.col-md-2
+        input(type='text',class="form-control",value="#{name}", readonly)
+
+    div.form-group
+      label.col-md-1.control-label 주행거리 :
+      div.col-md-2
+        input(type='text',class="form-control",value="#{dist}", readonly)
+      label.col-md-1.control-label 차량번호 :
+      div.col-md-2
+        input(type='text',class="form-control",value="#{number}", readonly)

@@ -14,9 +14,9 @@ router.get('/insert', function(req, res, next) {
 router.get('/select', function(req, res, next) {
   mysql.select("select * from customer where idcustomer="+req.param('customer_id'),function(re){
     console.log(re[0]);
+
     res.render('customer/select', re[0]);
   })
-
 });
 
 router.get('/list', function(req, res, next) {

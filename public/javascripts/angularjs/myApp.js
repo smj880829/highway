@@ -18,6 +18,12 @@ app.config(['$routeProvider','$locationProvider',function ($routeProvider,$locat
        console.log('okokok')
    }
 
+   $scope.insert_object = function() {
+       socket.emit('insert_object',{"values": '"'+$scope.kind +'","'+$scope.name+'",'+$scope.dist+',"'+$scope.number+'"'});
+       console.log('okokok');
+   }
+
+
  }]
  )
 

@@ -20,6 +20,18 @@ io.on('connection', function (socket) {
     })
   });
 
+  socket.on('insert_object', function(data){
+    console.log(data);
+    mysql.insert('insert INTO object(kind,name,dist,number) values ('+data.values+')',function(re){
+        console.log(re);
+    })
+  });
+
+  socket.on('select_customer_object', function(data){
+    console.log(data);
+
+  });
+
   socket.on('test', function(){
     console.log('test');
   });
