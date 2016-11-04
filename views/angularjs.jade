@@ -1,11 +1,15 @@
 doctype html
-html(ng-app)
+html(ng-app='myApp')
   head
     script(src='https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js')
     link(rel='stylesheet', href='/stylesheets/style.css')
     script(type='text/javascript', src='https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js')
+    script(src='https://cdn.socket.io/socket.io-1.4.5.js')
     script(type='text/javascript', src='/javascripts/bootstrap/dist/js/bootstrap.js')
+    script(type='text/javascript', src='/javascripts/angularjs/myApp.js')
+    script(type='text/javascript', src='/javascripts/angularjs/ng-scrollable.min.js')
+    script(src='/javascripts/angularjs/angular-route.js')
     link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css')
-    
+
   body
     block content

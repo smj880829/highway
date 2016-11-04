@@ -1,0 +1,23 @@
+extends ../angularjs
+
+block content
+  div(ng-controller='selectCtl')
+    table.table
+      thread
+        tr
+          th 이름
+          th 나이
+          th 전화번호
+          th 성별
+          th 주소
+          th email
+      tbody
+        each i in list
+          tr
+            th
+              a(href='/customer/select?customer_id=#{i.idcustomer}') #{i.name}
+            th #{i.age}
+            th #{i.tel}
+            th #{i.sex}
+            th #{i.address}
+            th #{i.email}

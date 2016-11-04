@@ -4,7 +4,8 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var http = require('http');
+
+
 
 var routes = require('./routes/index');
 
@@ -12,6 +13,9 @@ var main = require('./routes/main');
 var customer = require('./routes/customer');
 
 var app = express();
+
+var http = require('http').Server(app);
+var mysocket = require('./mysocketio')(http);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -67,7 +71,7 @@ app.use(function(err, req, res, next) {
   });
 });
 //123123
-http.createServer(app).listen(80, function(){
+http.listen(80, function(){
     console.log('server running...');
 });
 
