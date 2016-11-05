@@ -9,7 +9,7 @@ router.get('/', function(req, res, next) {
 
 
 router.get('/insert', function(req, res, next) {
-  res.render('service/insert', { title: 'Express' });
+  res.render('servicing/insert', { title: 'Express' });
 });
 
 

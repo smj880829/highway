@@ -1,4 +1,4 @@
-var app = angular.module('myApp',  ['ngRoute','ngScrollable'])
+var app = angular.module('myApp',  ['ngRoute','ngScrollable','angularModalService'])
 
 app.config(['$routeProvider','$locationProvider',function ($routeProvider,$locationProvider) {
 //Module의 config API를 사용하면 서비스 제공자provider에 접근할 수 있다. 여기선 $route 서비스 제공자를 인자로 받아온다.
@@ -11,7 +11,7 @@ app.config(['$routeProvider','$locationProvider',function ($routeProvider,$locat
 //otherwise 메소드를 통하여 브라우저의 URL이 $routeProivder에서 정의되지 않은 URL일 경우에 해당하는 설정을 할 수 있다. 여기선 ‘/home’으로 이동시키고 있다.
  }])
 
- app.controller('insertCtl',['$scope', '$window', 'socket', function($scope, $window,socket) {
+ app.controller('insertCtl',['$scope', '$window', 'socket','ModalService','$filter', function($scope, $window,socket,ModalService,$filter) {
 
    $scope.insert_customer = function() {
        socket.emit('insert_customer',{"values": '"'+$scope.name +'",'+$scope.age+',"'+$scope.tel+'","'+$scope.sex+'","'+$scope.address+'","'+$scope.email+'"'});
@@ -22,6 +22,46 @@ app.config(['$routeProvider','$locationProvider',function ($routeProvider,$locat
        socket.emit('insert_object',{"values": '"'+$scope.kind +'","'+$scope.name+'",'+$scope.dist+',"'+$scope.number+'"'});
        console.log('okokok');
    }
+
+   $scope.insert_service = function() {
+
+       socket.emit('insert_service',{"values": $scope.number +',"'+$scope.etc+'","'+$scope.start_day+'","'+$scope.end_day+'",'+$scope.state});
+       console.log('okokok');
+   }
+
+   $scope.select_object_list = function() {
+       socket.emit('select_object_list');
+   }
+
+   socket.on('object_list', function (data) {
+
+     $scope.showAModal(data);
+   });
+
+   $scope.showAModal = function(list) {
+   // Just provide a template url, a controller and call 'showModal'.
+
+   ModalService.showModal({
+     templateUrl: "/modal.html",
+     controller: "YesNoController",
+     inputs: {
+        title: "리스트",
+        data: list
+      }
+   }).then(function(modal) {
+     // The modal object has the element built, if this is a bootstrap modal
+     // you can call 'modal' to show it, if it's a custom modal just show or hide
+     // it as you need to.
+     modal.element.modal();
+     modal.close.then(function(result) {
+
+       $scope.number = result.number;
+        $scope.name = result.name;
+        $scope.dist = result.dist;
+
+         });
+       });
+      };
 
 
  }]
@@ -37,6 +77,22 @@ app.config(['$routeProvider','$locationProvider',function ($routeProvider,$locat
 
   }]
   )
+
+  app.controller('YesNoController', ['$scope', 'close','title','data', function($scope, close,title,data) {
+
+    $scope.title = title;
+    $scope.data = data;
+  $scope.close = function(result) {
+ 	  close(result, 500); // close, but give 500ms for bootstrap to animate
+  };
+
+  $scope.choice = function(result) {
+    close(
+      $scope.data[result]
+    , 500); // close, but give 500ms for bootstrap to animate
+  };
+
+}]);
 
 
   app.factory('socket', function ($rootScope) {

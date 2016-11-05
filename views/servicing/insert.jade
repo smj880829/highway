@@ -5,26 +5,43 @@ block content
     form.form-horizontal
       div.form-group
         label.col-md-1.control-label 차량번호 :
-        div.col-md-2
-          input(type='text',class="form-control",ng-model="name")
+        div.col-md-1
+          input(type='text',class="form-control",ng-model="number")
+        div.col-md-1
+          button.btn.btn-primary(ng-click="select_object_list()") 검색
         label.col-md-1.control-label 고객명 :
         div.col-md-2
           input(type='text',class="form-control",ng-model="age")
       div.form-group
         label.col-md-1.control-label 차량명칭 :
         div.col-md-2
-          input(type='text',class="form-control",ng-model="sex")
+          input(type='text',class="form-control",ng-model="name")
         label.col-md-1.control-label  주행거리 :
         div.col-md-2
-          input(type='text',class="form-control",ng-model="tel")
+          input(type='text',class="form-control",ng-model="dist")
       div.form-group
         label.col-md-1.control-label 입고일 :
-        div.col-md-5
-          input(type='text',class="form-control",ng-model="address")
-      div.form-group
+        div.col-md-2
+          input.form-control(type='date',datetime="yyyy-MM-dd",ng-model="start_day")
         label.col-md-1.control-label 출고일 :
         div.col-md-2
-          input(type='text',class="form-control",ng-model="email")
+          input.form-control(type='date',datetime="yyyy-MM-dd",ng-model="end_day")
+
+
+      div.form-group
+        label.col-md-1.control-label 정비종류 :
+        div.col-md-2
+          input(type='text',class="form-control",ng-model="kind")
+        label.col-md-1.control-label 상태 :
+        div.col-md-2
+          input(type='text',class="form-control",ng-model="state")
+
+      div.form-group
+        label.col-md-1.control-label 정비내역 :
+        div.col-md-5
+          input(type='text',class="form-control",ng-model="etc")
+
+
       br
       div.form-group
-        button.col-md-1.btn.btn-default(ng-click='insert_customer()') 추가
+        button.col-md-1.btn.btn-default(ng-click='insert_service()') 추가

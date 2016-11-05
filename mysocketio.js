@@ -20,6 +20,13 @@ io.on('connection', function (socket) {
     })
   });
 
+  socket.on('insert_service', function(data){
+    console.log(data);
+    mysql.insert('insert INTO servicing(object_id,etc,date_start,date_end,state) values ('+data.values+')',function(re){
+        console.log(re);
+    })
+  });
+
   socket.on('insert_object', function(data){
     console.log(data);
     mysql.insert('insert INTO object(kind,name,dist,number) values ('+data.values+')',function(re){
@@ -29,6 +36,13 @@ io.on('connection', function (socket) {
 
   socket.on('select_customer_object', function(data){
     console.log(data);
+
+  });
+
+  socket.on('select_object_list', function(){
+    mysql.list('select * from object',function(re){
+        socket.emit('object_list', re);
+    })
 
   });
 
