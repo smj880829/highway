@@ -1,0 +1,48 @@
+extends ../angularjs
+
+block content
+ div(ng-controller='insertCtl')
+    a.btn.btn-default(href='/service/list') 명단
+    br
+    br
+    form.form-horizontal
+      div.form-group
+        label.col-md-1.control-label 차량번호 :
+        div.col-md-2
+          input(type='text',class="form-control",value="#{number}", readonly)
+
+        label.col-md-1.control-label 고객명 :
+        div.col-md-2
+          input(type='text',class="form-control",ng-model="age")
+
+      div.form-group
+        label.col-md-1.control-label 차량명칭 :
+        div.col-md-2
+          input(type='text',class="form-control",value="#{name}", readonly)
+        label.col-md-1.control-label  주행거리 :
+        div.col-md-2
+          input(type='text',class="form-control",value="#{dist}", readonly)
+      div.form-group
+        label.col-md-1.control-label 입고일 :
+        div.col-md-2
+          input(type='text',class="form-control",value="#{date_start}", readonly)
+        label.col-md-1.control-label 출고일 :
+        div.col-md-2
+          input(type='text',class="form-control",value="#{date_end}", readonly)
+
+
+      div.form-group
+        label.col-md-1.control-label 정비종류 :
+        div.col-md-2
+          input(type='text',class="form-control",value="#{kind}", readonly)
+        label.col-md-1.control-label 상태 :
+        div.col-md-2
+          input(type='text',class="form-control",value="#{state}", readonly)
+
+      div.form-group
+        label.col-md-1.control-label 정비내역 :
+        div.col-md-5
+          input(type='text',class="form-control",value="#{etc}", readonly)
+
+
+  

@@ -25,4 +25,11 @@ router.get('/list', function(req, res, next) {
   })
 });
 
+router.get('/link', function(req, res, next) {
+  mysql.select("select * from customer where idcustomer="+req.param('customer_id'),function(re){
+    res.render('customer/link_object', re[0]);
+  })
+
+});
+
 module.exports = router;

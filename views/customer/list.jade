@@ -11,6 +11,7 @@ block content
           th 성별
           th 주소
           th email
+          th 차량등록
       tbody
         each i in list
           tr
@@ -21,3 +22,5 @@ block content
             th #{i.sex}
             th #{i.address}
             th #{i.email}
+            th
+              a.btn.btn-default(href='/customer/link?customer_id=#{i.idcustomer}') 등록

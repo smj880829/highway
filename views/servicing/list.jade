@@ -5,3 +5,19 @@ block content
     table.table
       thread
         tr
+          th 차량번호
+          th 상태
+          th 입고일
+          th 출고일
+          th 정비내역
+          th 입금내역
+      tbody
+        each i in list
+          tr
+            th #{i.number}
+            th #{i.state}
+            th #{i.date_start}
+            th #{i.date_end}
+            th
+              a.btn.btn-default(href='/service/select?servicing_id=#{i.idservicing}') 정보
+            th ----

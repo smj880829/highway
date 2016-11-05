@@ -1,7 +1,7 @@
 extends ../angularjs
 
 block content
- div(ng-controller='selectCtl')
+ div(ng-controller='insertCtl')
   a.btn.btn-default(href='/customer/list') 명단
   br
   br
@@ -29,4 +29,4 @@ block content
       div.col-md-2
         input(type='text',class="form-control",value="#{email}", readonly)
 
-    button.btn.btn-default(ng-click="list_customer_object(#{idcustomer})")  차량리스트
+   button.btn.btn-default(ng-click="select_object_list2(#{idcustomer})")  차량등록

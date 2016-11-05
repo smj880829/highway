@@ -34,13 +34,11 @@ app.config(['$routeProvider','$locationProvider',function ($routeProvider,$locat
    }
 
    socket.on('object_list', function (data) {
-
      $scope.showAModal(data);
    });
 
    $scope.showAModal = function(list) {
    // Just provide a template url, a controller and call 'showModal'.
-
    ModalService.showModal({
      templateUrl: "/modal.html",
      controller: "YesNoController",
@@ -54,26 +52,80 @@ app.config(['$routeProvider','$locationProvider',function ($routeProvider,$locat
      // it as you need to.
      modal.element.modal();
      modal.close.then(function(result) {
-
        $scope.number = result.number;
         $scope.name = result.name;
         $scope.dist = result.dist;
-
+        $scope.c_name = result.c_name;
          });
        });
       };
 
+      $scope.customerid_temp = null;
+      $scope.select_object_list2 = function(id) {
+          socket.emit('select_object_list2');
+          $scope.customerid_temp = id;
+      }
+
+      socket.on('object_list2', function (data) {
+        $scope.showAModal2(data);
+      });
+
+      $scope.showAModal2 = function(list) {
+      // Just provide a template url, a controller and call 'showModal'.
+      ModalService.showModal({
+        templateUrl: "/modal.html",
+        controller: "YesNoController",
+        inputs: {
+           title: "리스트",
+           data: list
+         }
+      }).then(function(modal) {
+        // The modal object has the element built, if this is a bootstrap modal
+        // you can call 'modal' to show it, if it's a custom modal just show or hide
+        // it as you need to.
+        modal.element.modal();
+        modal.close.then(function(result) {
+              socket.emit('link_customer_object',{"values": $scope.customerid_temp +','+result.idobject});
+            });
+          });
+         };
+
+
 
  }]
  )
 
- app.controller('listCtl',['$scope', '$window', 'socket', function($scope, $window,socket) {
+ app.controller('listCtl',['$scope', '$window', 'socket','ModalService','$filter', function($scope, $window,socket,ModalService,$filter) {
 
  }]
  )
 
 
-  app.controller('selectCtl',['$scope', '$window', 'socket', function($scope, $window,socket) {
+  app.controller('selectCtl',['$scope', '$window', 'socket','ModalService','$filter', function($scope, $window,socket,ModalService,$filter) {
+
+        $scope.list_customer_object = function(id) {
+            socket.emit('list_customer_object',{"customer_id" : id });
+        }
+        socket.on("list_object_customer", function (data) {
+            $scope.showAModal(data);
+        });
+
+
+        $scope.showAModal = function(list) {
+        ModalService.showModal({
+          templateUrl: "/modal.html",
+          controller: "YesNoController",
+          inputs: {
+             title: "리스트",
+             data: list
+           }
+        }).then(function(modal) {
+          modal.element.modal();
+          modal.close.then(function(result) {
+
+              });
+            });
+           };
 
   }]
   )
