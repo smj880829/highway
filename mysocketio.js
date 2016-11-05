@@ -2,7 +2,7 @@ var io =  require('socket.io')();
 var mysql = require('./mysqlConnector/connector.js');
 
 module.exports = function(options) {
-  io.attach(options,{origins:'localhost' +':* http://' + 'localhost' +':*'});
+  io.attach(options,{origins:'52.78.102.96' +':* http://' + '52.78.102.96' +':*'});
   //io.attach(options);
 };
 
