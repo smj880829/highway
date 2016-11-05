@@ -13,6 +13,7 @@ var main = require('./routes/main');
 var customer = require('./routes/customer');
 var object = require('./routes/object');
 var service = require('./routes/service');
+var myitem = require('./routes/myitem');
 
 var app = express();
 
@@ -41,6 +42,7 @@ app.use('/main', main);
 app.use('/customer', customer);
 app.use('/object', object);
 app.use('/service', service);
+app.use('/myitem', myitem);
 
 
 // catch 404 and forward to error handler

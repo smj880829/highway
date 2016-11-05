@@ -20,9 +20,16 @@ router.get('/select', function(req, res, next) {
 });
 
 router.get('/list', function(req, res, next) {
-  mysql.list("select * from servicing_object",function(re){
-    res.render('servicing/list', { list: re});
-  })
+  if(req.param('etc') == null){
+    mysql.list("select * from servicing_object",function(re){
+      res.render('servicing/list', { list: re});
+    })
+  }
+  else{
+    mysql.list("select * from servicing_object where etc='"+req.param('etc')+"'",function(re){
+      res.render('servicing/list', { list: re});
+    })
+  }
 });
 
 router.get('/list_object', function(req, res, next) {

@@ -41,13 +41,13 @@ io.on('connection', function (socket) {
   });
 
   socket.on('select_object_list', function(){
-    mysql.list('select * from object_customer',function(re){
+    mysql.list('select * from object_customer where kind < 100',function(re){
         socket.emit('object_list', re);
     })
   });
 
   socket.on('select_object_list2', function(){
-    mysql.list('select * from object_customer',function(re){
+    mysql.list('select * from object_customer where kind < 100',function(re){
         socket.emit('object_list2', re);
     })
   });
@@ -61,6 +61,13 @@ io.on('connection', function (socket) {
   socket.on('list_customer_object', function(data){
     mysql.list('select * from object_customer where customer_id=' + data.customer_id,function(re){
         socket.emit('list_object_customer', re);
+    })
+  });
+
+  socket.on('insert_myitem', function(data){
+    console.log(data);
+    mysql.insert('insert INTO myitem(kind,name,price_marked,price_selling,price_purchasing,count,number) values ('+data.values+')',function(re){
+        console.log(re);
     })
   });
 

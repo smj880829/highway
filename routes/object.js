@@ -14,13 +14,13 @@ router.get('/insert', function(req, res, next) {
 
 
 router.get('/list', function(req, res, next) {
-  mysql.list("select * from object_customer",function(re){
+  mysql.list("select * from object_customer where kind < 100",function(re){
     res.render('object/list', { list: re});
   })
 });
 
 router.get('/select', function(req, res, next) {
-  mysql.select("select * from object_customer where idobject="+req.param('object_id'),function(re){
+  mysql.select("select * from object_customer where kind < 100 and idobject="+req.param('object_id'),function(re){
     console.log(re[0]);
 
     res.render('object/select', re[0]);

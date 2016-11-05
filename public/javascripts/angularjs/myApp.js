@@ -90,13 +90,21 @@ app.config(['$routeProvider','$locationProvider',function ($routeProvider,$locat
           });
          };
 
-
+     $scope.insert_myitem = function() {
+         socket.emit('insert_myitem',{"values": $scope.kind +',"'+$scope.name+'",'+$scope.price_marked+','+$scope.price_selling+','+$scope.price_purchasing +',' + $scope.count + ',"' +$scope.number + '"' });
+         console.log('okokok');
+     }
 
  }]
  )
 
  app.controller('listCtl',['$scope', '$window', 'socket','ModalService','$filter', function($scope, $window,socket,ModalService,$filter) {
 
+ }]
+ )
+
+ app.controller('indexCtl',['$scope', '$window', 'socket','ModalService','$filter', function($scope, $window,socket,ModalService,$filter) {
+  
  }]
  )
 

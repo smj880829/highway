@@ -1,7 +1,15 @@
 extends ../angularjs
 
 block content
-  a.btn.btn-default(href='/service/list') 리스트
-  a.btn.btn-default(href='/service/insert') 추가
+  div(ng-controller='indexCtl')
+    a.btn.btn-default(href='/service/list') 리스트
+    a.btn.btn-default(href='/service/insert') 추가
 
-  a.btn.btn-default(href='/') 메인
+    a.btn.btn-default(href='/') 메인
+    br
+    br
+    p 정비내역 검색
+    div.form-group
+      div.col-md-2
+        input.form-control(type='text',ng-model="search")
+      a.btn.btn-default(ng-href="/service/list?etc={{search}}") 검색

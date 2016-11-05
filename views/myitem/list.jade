@@ -1,0 +1,27 @@
+extends ../angularjs
+
+block content
+  div(ng-controller='listCtl')
+    table.table
+      thread
+        tr
+          th 종류
+          th 모델명
+          th 정찰가격
+          th 판매가격
+          th 매입가격
+          th 수량
+          th 차량번호
+          th 수정
+      tbody
+        each i in list
+          tr
+            th #{i.kind}
+            th #{i.name}
+            th #{i.price_marked}
+            th #{i.price_selling}
+            th #{i.price_purchasing}
+            th #{i.count}
+            th #{i.number}
+            th
+              button.btn.btn-default() 수정
