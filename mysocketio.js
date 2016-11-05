@@ -22,7 +22,8 @@ io.on('connection', function (socket) {
 
   socket.on('insert_service', function(data){
     console.log(data);
-    mysql.insert('insert INTO servicing(object_id,etc,date_start,date_end,state) values ('+data.values+')',function(re){
+
+    mysql.insert('insert INTO servicing(object_id,etc,date_start,date_end,state,contract,price,money) values ('+data.values+')',function(re){
         console.log(re);
     })
   });

@@ -25,6 +25,12 @@ router.get('/list', function(req, res, next) {
   })
 });
 
+router.get('/list_object', function(req, res, next) {
+  mysql.list("select * from servicing_object where object_id="+req.param('object_id'),function(re){
+    res.render('servicing/list', { list: re});
+  })
+});
+
 
 
 

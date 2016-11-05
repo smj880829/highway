@@ -7,6 +7,7 @@ block content
         label.col-md-1.control-label 차량번호 :
         div.col-md-1
           input(type='text',class="form-control",ng-model="number")
+          input(type='hidden',ng-model="idobject")
         div.col-md-1
           button.btn.btn-primary(ng-click="select_object_list()") 검색
         label.col-md-1.control-label 고객명 :
@@ -40,6 +41,18 @@ block content
         label.col-md-1.control-label 정비내역 :
         div.col-md-5
           input(type='text',class="form-control",ng-model="etc")
+
+      div.form-group
+        label.col-md-1.control-label 계약금 :
+        div.col-md-2
+          input(type='text',class="form-control",ng-model="contract")
+        label.col-md-1.control-label 가격 :
+        div.col-md-2
+          input(type='text',class="form-control",ng-model="price")
+      div.form-group
+        label.col-md-1.control-label 계산금액 :
+        div.col-md-2
+          input(type='text',class="form-control",ng-model="money")
 
 
       br

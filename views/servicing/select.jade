@@ -13,7 +13,7 @@ block content
 
         label.col-md-1.control-label 고객명 :
         div.col-md-2
-          input(type='text',class="form-control",ng-model="age")
+          input(type='text',class="form-control",value="----", readonly)
 
       div.form-group
         label.col-md-1.control-label 차량명칭 :
@@ -44,5 +44,14 @@ block content
         div.col-md-5
           input(type='text',class="form-control",value="#{etc}", readonly)
 
-
-  
+      div.form-group
+        label.col-md-1.control-label 계약금 :
+        div.col-md-2
+          input(type='text',class="form-control",value="#{contract}", readonly)
+        label.col-md-1.control-label 가격 :
+        div.col-md-2
+          input(type='text',class="form-control",value="#{price}", readonly)
+      div.form-group
+        label.col-md-1.control-label 계산금액 :
+        div.col-md-2
+          input(type='text',class="form-control",value="#{money}", readonly)

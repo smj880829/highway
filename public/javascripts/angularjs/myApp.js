@@ -24,8 +24,7 @@ app.config(['$routeProvider','$locationProvider',function ($routeProvider,$locat
    }
 
    $scope.insert_service = function() {
-
-       socket.emit('insert_service',{"values": $scope.number +',"'+$scope.etc+'","'+$scope.start_day+'","'+$scope.end_day+'",'+$scope.state});
+       socket.emit('insert_service',{"values": $scope.idobject +',"'+$scope.etc+'","'+$scope.start_day+'","'+$scope.end_day+'",'+$scope.state +',' + $scope.contract + ',' + $scope.price + ',' + $scope.money});
        console.log('okokok');
    }
 
@@ -53,6 +52,7 @@ app.config(['$routeProvider','$locationProvider',function ($routeProvider,$locat
      modal.element.modal();
      modal.close.then(function(result) {
        $scope.number = result.number;
+       $scope.idobject = result.idobject;
         $scope.name = result.name;
         $scope.dist = result.dist;
         $scope.c_name = result.c_name;
