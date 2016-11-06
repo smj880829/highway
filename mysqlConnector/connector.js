@@ -1,10 +1,11 @@
 var mysql = require('mysql');
 var pool = mysql.createPool({
     connectionLimit: 10,
-    host: '52.78.102.96',
+    host: 'localhost',
     user: 'root',
     database: 'highway1',
-    password: 'root'
+    password: 'root',
+    port: 20000
 });
 
 function insert(sql,callback){
