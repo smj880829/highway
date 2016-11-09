@@ -2,9 +2,9 @@ var mysql = require('mysql');
 var pool = mysql.createPool({
     connectionLimit: 10,
     host: 'localhost',
-    user: 'root',
+    user: 'agcddc',
     database: 'highway1',
-    password: 'root',
+    password: 'agcddc',
     port: 20000
 });
 
@@ -17,6 +17,26 @@ function insert(sql,callback){
           }
           callback(true)
           connection.release();
+      });
+  });
+}
+
+function inserts(sql,sql2,callback){
+  pool.getConnection(function (err, connection) {
+      connection.query(sql, function (err, rows) {
+          if (err) {
+            console.error("err : " + err);
+            callback(false)
+          }
+
+          connection.query(sql2, function (err, rows) {
+              if (err) {
+                console.error("err : " + err);
+                callback(false)
+              }
+              callback(true)
+              connection.release();
+          });
       });
   });
 }

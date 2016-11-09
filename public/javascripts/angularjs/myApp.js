@@ -156,7 +156,7 @@ app.config(['$routeProvider','$locationProvider',function ($routeProvider,$locat
 
 
   app.factory('socket', function ($rootScope) {
-    var socket = io.connect('http://52.78.102.96/');
+    var socket = io.connect('http://localhost/');
     return {
       on: function (eventName, callback) {
         socket.on(eventName, function () {

@@ -38,6 +38,10 @@ router.get('/list_object', function(req, res, next) {
   })
 });
 
+router.get('/insert_info', function(req, res, next) {
+  res.render('servicing/insert_info', { title: 'Express' });
+});
+
 
 
 
